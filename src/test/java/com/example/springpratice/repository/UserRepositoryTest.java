@@ -19,7 +19,7 @@ class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    @Transactional
+    //@Transactional
     void crud() {
         /*
         List<User> users = userRepository.findAll(Sort.by(Direction.DESC, "name"));
@@ -31,4 +31,10 @@ class UserRepositoryTest {
         User user = userRepository.getOne(1L);
         System.out.println(user);
     }
+
+    @Test
+    void select() {
+        System.out.println(userRepository.findByName("martin"));
+    }
+
 }
