@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author jhkim
@@ -16,6 +19,7 @@ class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
+    //@Transactional
     void crud() {
         userRepository.save(new User("david", "david@fastcampus.com"));
 
@@ -24,4 +28,10 @@ class UserRepositoryTest {
 
         userRepository.save(user);
     }
+
+    @Test
+    void select() {
+        System.out.println(userRepository.findByName("martin"));
+    }
+
 }
