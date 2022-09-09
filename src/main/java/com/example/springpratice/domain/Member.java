@@ -1,7 +1,6 @@
 package com.example.springpratice.domain;
 
 import lombok.*;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,21 +10,14 @@ import javax.persistence.Id;
  * @since 2022/05/17
  */
 
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
-public class User {
-    @NonNull
-    private String name;
-
-    @NonNull
-    private String email;
-
+public class Member {
     @Id
     @GeneratedValue
     private Long id;
 
+    private String userName;
 
 }
