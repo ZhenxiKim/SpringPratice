@@ -31,11 +31,16 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     //같은 엔티티에 대해 셀프 양방향 관계를 맺음
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parennt_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
+
+    public void addChildCategory(Category child) {
+        this.child.add(child);
+        child.setParent(this);
+    }
 
 }
