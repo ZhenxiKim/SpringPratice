@@ -2,7 +2,6 @@ package com.example.springpratice.repository;
 
 import com.example.springpratice.domain.Member;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -24,10 +23,15 @@ public class MemberRepository {
         return em.find(Member.class, id);
     }
 
-    public List<Member> findAll(String name) {
+    public List<Member> findAll() {
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
+                .getResultList();
+        //jpql 객체를 대상으로 쿼리 조회
+    }
+
+    public List<Member> findByName(String name) {
         return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
-        //jpql 객체를 대상으로 쿼리 조회
     }
 }
