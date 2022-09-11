@@ -27,18 +27,6 @@ public class MemberRepositoryTest {
     @Rollback(false)
     public void testMember() throws Exception {
 
-        //given
-        Member member = new Member();
-        member.setUserName("memberA");
-
-        //when
-        Long saveId = memberRepository.save(member);
-        Member findMember = memberRepository.find(saveId);
-
-        //then
-        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
-        Assertions.assertThat(findMember.getUserName()).isEqualTo(member.getUserName());
-        Assertions.assertThat(findMember).isEqualTo(member);
 
     }
 }

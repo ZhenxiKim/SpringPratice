@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * @author jhkim
@@ -12,15 +13,21 @@ import javax.persistence.PersistenceContext;
  */
 @Repository
 public class MemberRepository {
-    @PersistenceContext
+    @PersistenceContext//어노테이션 설정으로 스프링이 entityManager 주입
     private EntityManager em;
 
-    public Long save(Member member) {
+    public void save(Member member) {
         em.persist(member);
-        return member.getId();
     }
 
     public Member find(Long id) {
         return em.find(Member.class, id);
+    }
+
+    public List<Member> findAll(String name) {
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
+                .setParameter("name", name)
+                .getResultList();
+        //jpql 객체를 대상으로 쿼리 조회
     }
 }
