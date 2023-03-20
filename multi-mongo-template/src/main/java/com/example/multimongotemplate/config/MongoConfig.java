@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ReadConcern;
-import com.mongodb.ReadPreference;
 import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -63,7 +62,7 @@ public class MongoConfig {
         return MongoClientSettings.builder()
                 .readConcern(ReadConcern.DEFAULT)
                 .writeConcern(WriteConcern.MAJORITY)
-                .readPreference(ReadPreference.primary())
+                //.readPreference(ReadPreference.primary())
                 .applyConnectionString(ConnectionString)
                 .build();
     }
